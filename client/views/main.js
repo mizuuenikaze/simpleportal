@@ -13,7 +13,7 @@ var config = require('clientconfig');
 
 
 module.exports = View.extend({
-    template: templates.body,
+    template: templates.portalbody,
     autoRender: true,
     initialize: function () {
         // this marks the correct nav item selected
