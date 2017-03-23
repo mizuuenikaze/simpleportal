@@ -9,7 +9,7 @@ module.exports = Router.extend({
     routes: {
         '': 'home',
         'features': 'features',
-        'contact': 'info',
+        'contact': 'contact',
         '(*path)': 'catchAll'
     },
 

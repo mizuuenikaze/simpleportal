@@ -14,6 +14,7 @@ window.app = app;
 // Extends our main app singleton
 app.extend({
     me: new Me(),
+    featureCollection: new Features(),
     router: new Router(),
     // This is where it all starts
     init: function() {

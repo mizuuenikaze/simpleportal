@@ -3,14 +3,10 @@ var templates = require('../templates');
 
 
 module.exports = View.extend({
-    template: templates.includes.person,
+    template: templates.includes.feature,
     bindings: {
-        'model.fullName': '[data-hook~=name]',
-        'model.avatar': {
-            type: 'attribute',
-            hook: 'avatar',
-            name: 'src'
-        },
+        'model.title': '[data-hook~=title]',
+        'model.content': '[data-hook~=content]',
         'model.editUrl': {
             type: 'attribute',
             hook: 'action-edit',

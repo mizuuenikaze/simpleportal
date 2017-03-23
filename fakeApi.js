@@ -5,12 +5,12 @@ var features = [
     {
         id: 1,
         title: 'Portal',
-        content: 'ampersand single page app with pug and stylus.',
+        content: 'ampersand single page app with pug and stylus.'
     },
     {
         id: 2,
         title: 'Scheduler',
-        content: 'some kind of scheduling thing.',
+        content: 'some kind of scheduling thing.'
     }
 ];
 var id = 3;

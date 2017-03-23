@@ -18,7 +18,7 @@ module.exports = AmpersandModel.extend({
         hash: {
             deps: ['title', 'content'],
             fn: function () {
-                return stringHash(this.title + ' ' + this.content;
+                return stringHash(this.title + ' ' + this.content);
             }
         },
         editUrl: {

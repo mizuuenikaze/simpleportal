@@ -163,3 +163,13 @@ body {
     width: 700px;
   }
 }
+
+/*
+ * boostrap overrides
+ */
+
+.list-group-item {
+  background-color: rgba(64, 128, 64, 0.4);
+  border: none;
+  border-bottom: 2px solid #ddd;
+}
