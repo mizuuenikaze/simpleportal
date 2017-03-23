@@ -47,5 +47,8 @@
     "undef": true,
     "white": true
   },
-  "main": "server.js"
+  "main": "server.js",
+  "scripts": {
+    "transpile": "./build.sh"
+  }
 }

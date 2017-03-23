@@ -24,7 +24,8 @@ module.exports = View.extend({
     },
     render: function () {
         // some additional stuff we want to add to the document head
-        document.head.appendChild(domify(templates.head({isDebug: config.debugMode})));
+        var theFirstChild = document.head.firstChild;
+        document.head.insertBefore(domify(templates.head({isDebug: config.debugMode})), theFirstChild);
 
         // main renderer
         this.renderWithTemplate(this);

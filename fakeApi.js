@@ -1,59 +1,33 @@
 var _ = require('lodash');
 
 
-var people = [
+var features = [
     {
         id: 1,
-        firstName: 'Henrik',
-        lastName: 'Joreteg',
-        coolnessFactor: 11
+        title: 'Portal',
+        content: 'ampersand single page app with pug and stylus.',
     },
     {
         id: 2,
-        firstName: 'Bob',
-        lastName: 'Saget',
-        coolnessFactor: 2
-    },
-    {
-        id: 3,
-        firstName: 'Larry',
-        lastName: 'King',
-        coolnessFactor: 4
-    },
-    {
-        id: 4,
-        firstName: 'Diana',
-        lastName: 'Ross',
-        coolnessFactor: 6
-    },
-    {
-        id: 5,
-        firstName: 'Crazy',
-        lastName: 'Dave',
-        coolnessFactor: 8
-    },
-    {
-        id: 6,
-        firstName: 'Larry',
-        lastName: 'Johannson',
-        coolnessFactor: 4
+        title: 'Scheduler',
+        content: 'some kind of scheduling thing.',
     }
 ];
-var id = 7;
+var id = 3;
 
 function get(id) {
-    return _.findWhere(people, {id: parseInt(id + '', 10)});
+    return _.findWhere(features, {id: parseInt(id + '', 10)});
 }
 
 exports.list = function (req, res) {
-    res.send(people);
+    res.send(features);
 };
 
 exports.add = function (req, res) {
-    var person = req.body;
-    person.id = id++;
-    people.push(person);
-    res.status(201).send(person);
+    var feature = req.body;
+    feature.id = id++;
+    features.push(feature);
+    res.status(201).send(feature);
 };
 
 exports.get = function (req, res) {
@@ -64,7 +38,7 @@ exports.get = function (req, res) {
 
 exports.delete = function (req, res) {
     var found = get(req.params.id);
-    if (found) people = _.without(people, found);
+    if (found) features = _.without(features, found);
     res.status(found ? 200 : 404);
     res.send(found);
 };

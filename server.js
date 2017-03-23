@@ -49,11 +49,11 @@ app.set('view engine', 'pug');
 // Set up our little demo API
 // -----------------
 var api = require('./fakeApi');
-app.get('/api/people', api.list);
-app.get('/api/people/:id', api.get);
-app.delete('/api/people/:id', api.delete);
-app.put('/api/people/:id', api.update);
-app.post('/api/people', api.add);
+app.get('/api/features', api.list);
+app.get('/api/features/:id', api.get);
+app.delete('/api/features/:id', api.delete);
+app.put('/api/features/:id', api.update);
+app.post('/api/features', api.add);
 
 
 // -----------------
@@ -80,10 +80,13 @@ app.use(function (req, res, next) {
 // Configure Moonboots to serve our client application
 // ---------------------------------------------------
 
-var allStylesheets = [ fixPath('stylesheets/app.css') ];
+var allStylesheets = [
+    fixPath('stylesheets/app.css'),
+    fixPath('stylesheets/cover.css')
+];
 
 if (config.isDev) {
-    allStylesheets.push(fixPath('stylesheets/bootstrap.css'));
+    allStylesheets.unshift(fixPath('stylesheets/bootstrap.css'));
 }
 
 new Moonboots({
@@ -103,7 +106,8 @@ new Moonboots({
             // js file is requested. Which means you can seamlessly change jade and
             // refresh in your browser to get new templates.
             if (config.isDev) {
-                templatizer(fixPath('templates'), fixPath('client/templates.js'), function(err) { console.log(err || 'Successful template build') });
+                // broken with pug and puglatizer - unexpected token
+                //templatizer(fixPath('templates'), fixPath('client/templates.js'));
             }
         },
         beforeBuildCSS: function (done) {
@@ -114,7 +118,7 @@ new Moonboots({
                 stylizer({
                     infile: fixPath('stylesheets/app.styl'),
                     outfile: fixPath('stylesheets/app.css'),
-                    development: true
+                    development: config.isDev
                 }, done);
             } else {
                 done();
