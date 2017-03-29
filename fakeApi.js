@@ -4,16 +4,31 @@ var _ = require('lodash');
 var features = [
     {
         id: 1,
-        title: 'Portal',
-        content: 'ampersand single page app with pug and stylus.'
+        title: 'This Portal',
+        content: 'An ampersand single page app with pug and stylus.',
+        badges: [
+            {'label': 'success', 'glyphicon': 'ok', 'hint': 'functional'},
+            {'label': 'info', 'glyphicon': 'wrench', 'hint': 'under construction'}
+        ]
     },
     {
         id: 2,
         title: 'Scheduler',
-        content: 'some kind of scheduling thing.'
+        content: 'Some kind of scheduling thing.',
+        badges: [
+            {'label': 'danger', 'glyphicon': 'cloud', 'hint': 'vapor-ware'}
+        ]
+    },
+    {
+        id: 3,
+        title: 'Checkout',
+        content: 'A checkout flow with stripe and paypal integration.',
+        badges: [
+            {'label': 'danger', 'glyphicon': 'cloud', 'hint': 'vapor-ware'}
+        ]
     }
 ];
-var id = 3;
+var id = 4;
 
 function get(id) {
     return _.findWhere(features, {id: parseInt(id + '', 10)});

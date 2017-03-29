@@ -137,16 +137,12 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-    position: fixed;
+    position: relative;
     top: 0;
   }
   .mastfoot {
     position: fixed;
     bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
   }
   /* Handle the widths */
   .masthead,
@@ -169,7 +165,7 @@ body {
  */
 
 .list-group-item {
-  background-color: rgba(64, 128, 64, 0.4);
+  background-color: rgba(64, 94, 128, 0.4);
   border: none;
   border-bottom: 2px solid #ddd;
 }

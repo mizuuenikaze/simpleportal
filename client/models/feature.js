@@ -10,6 +10,7 @@ module.exports = AmpersandModel.extend({
         id: 'any',
         title: ['string', true, ''],
         content: ['string', true, ''],
+        badges: ['array', true, function () { return [];}]
     },
     session: {
         selected: ['boolean', true, false]
