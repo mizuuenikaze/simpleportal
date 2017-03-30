@@ -5,6 +5,7 @@ This app was generated with the [ampersand cli tool](http://ampersandjs.com/lear
 ## Modifications
 1. Replaced jade with pug 2.x and using puglatizer
 1. Upgraded bootstrap
+1. pm2 launch and monitoring
 
 This is a simple portal with links to more complex applications.  The back ends
 are separate projects that provide distinct restful apis.  Final deployments into a webserver to deliver the client apps remove the need for express and fake apis that are in this project for development and testing.
