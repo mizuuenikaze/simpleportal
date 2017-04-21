@@ -50,6 +50,6 @@
   },
   "main": "server.js",
   "scripts": {
-    "transpile": "NODE_ENV=$NODE_ENV ./build.sh"
+    "transpile": "make"
   }
 }

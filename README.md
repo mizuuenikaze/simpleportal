@@ -11,7 +11,9 @@ This is a simple portal with links to more complex applications.  The back ends
 are separate projects that provide distinct restful apis.  Final deployments into a webserver to deliver the client apps remove the need for express and fake apis that are in this project for development and testing.
 
 ## Production build
-$ NODE_ENV=production npm run transpile
+Configure for production
+$ ./configure NODE_ENV=production
+$ make
 
 ## How to run it
 
