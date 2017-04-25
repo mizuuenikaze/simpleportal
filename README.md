@@ -12,8 +12,8 @@ are separate projects that provide distinct restful apis.  Final deployments int
 
 ## Production build
 Configure for production
-$ ./configure NODE_ENV=production
-$ make
+\$ ./configure NODE_ENV=production
+\$ make
 
 ## How to run it
 

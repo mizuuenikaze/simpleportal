@@ -1,11 +1,9 @@
 node_modules/
 artifacts/
-autom4te.cache/
 client/templates.js
 stylesheets/app.css
-aclocal.m4
-install-sh
-missing
+# autotools
+autom4te.cache/
 Makefile
 config.log
 config.status

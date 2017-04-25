@@ -2,7 +2,7 @@
 # Custom makefile for a ampersand based frontend
 #
 
-mukportaldir = ${prefix}/mukportal
+mukportaldir = $(prefix)/muk
 mukportal_DATA = artifacts/portal.js artifacts/theme.css
 
 # Make does not offer a recursive wildcard function, so here's one:
