@@ -13,16 +13,17 @@ client/templates.js: $(call rwildcard,templates/,*.pug)
 	puglatizer -d ./templates -o $@
 
 stylesheets/app.css: stylesheets/app.styl
-	stylus < $^ > $@
+	cd stylesheets; \
+	stylus < $(notdir $^) > $(notdir $@)
 
-artifacts/portal.js: $(call rwildcard,client/,*.js)
+artifacts/portal.js: client/templates.js $(call rwildcard,client/,*.js)
 	browserify -t uglifyify client/app.js | uglifyjs --screw-ie8 -mc > $@
 
-artifacts/theme.css: stylesheets/*.css
+artifacts/theme.css: stylesheets/app.css stylesheets/cover.css
 	cleancss --output $@ $^
 
 if NODE_PROD
-all-local: client/templates.js stylesheets/app.css artifacts/portal.js artifacts/theme.css
+all-local: artifacts/portal.js artifacts/theme.css
 else
 all-local: client/templates.js
 endif
