@@ -2,9 +2,6 @@
 # Custom makefile for a ampersand based frontend
 #
 
-mukportaldir = $(prefix)/muk
-mukportal_DATA = artifacts/portal.js artifacts/theme.css
-
 # Make does not offer a recursive wildcard function, so here's one:
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 
@@ -22,8 +19,17 @@ artifacts/portal.js: client/templates.js $(call rwildcard,client/,*.js)
 artifacts/theme.css: stylesheets/app.css stylesheets/cover.css
 	cleancss --output $@ $^
 
-if NODE_PROD
-all-local: artifacts/portal.js artifacts/theme.css
+pm2:
+	jq -r '.apps[0].env.NODE_ENV |= "$(NODE_ENV)"' process.json > p2.tmp && mv p2.tmp process.json
+
+if DEBUG
+NODE_ENV = development
+all-local: client/templates.js pm2
 else
-all-local: client/templates.js
+NODE_ENV = production
+portaldir = $(prefix)/muk
+portal_DATA = artifacts/portal.js artifacts/theme.css
+all-local: artifacts/portal.js artifacts/theme.css pm2
 endif
+
+.PHONY: pm2

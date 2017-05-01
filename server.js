@@ -12,6 +12,7 @@ var serveStatic = require('serve-static');
 var stylizer = require('stylizer');
 var templatizer = require('puglatizer');
 var app = express();
+var contextPath = '/muk';
 
 // a little helper for fixing paths for various environments
 var fixPath = function (pathString) {
@@ -71,7 +72,7 @@ if (config.isDev) {
 // Set our client config cookie
 // -----------------
 app.use(function (req, res, next) {
-    res.cookie('config', JSON.stringify(config.client));
+    res.cookie('config', JSON.stringify(config.client), {path: contextPath});
     next();
 });
 
@@ -125,6 +126,7 @@ new Moonboots({
             }
         }
     },
+	appPath: contextPath,
     server: app
 });
 

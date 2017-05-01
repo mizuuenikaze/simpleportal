@@ -76,10 +76,10 @@ module.exports = View.extend({
     },
 
     updateActiveNav: function () {
-        var path = window.location.pathname.slice(1);
+        var path = window.location.pathname.slice(app.contextPath.length);
 
         this.queryAll('.nav a[href]').forEach(function (aTag) {
-            var aPath = aTag.pathname.slice(1);
+            var aPath = aTag.pathname.slice(app.contextPath.length);
 
             if ((!aPath && !path) || (aPath && path.indexOf(aPath) === 0)) {
                 dom.addClass(aTag.parentNode, 'active');

@@ -1,5 +1,5 @@
 dnl Process this file with autoconf
-AC_INIT([mukportal], [1.2.0])
+AC_INIT([simpleportal], [1.2.0])
 AC_PREREQ(2.69)
 AM_INIT_AUTOMAKE([foreign nostdinc])
 dnl Program checks
@@ -23,8 +23,20 @@ AC_CHECK_PROG([cleancss],[cleancss], [yes], [no])
 AM_CONDITIONAL([FOUND_CLEANCSS], [test "x$cleancss" = "xyes"])
 AM_COND_IF([FOUND_CLEANCSS],,[AC_MSG_ERROR([Required: npm install -g clean-css-cli])])
 
-AC_ARG_VAR([NODE_ENV], [Denotes the build mode or development or production])
-AM_CONDITIONAL([NODE_PROD], [test "x$NODE_ENV" = "xproduction"])
+AC_CHECK_PROG([jq],[jq], [yes], [no])
+AM_CONDITIONAL([FOUND_JQ], [test "x$jq" = "xyes"])
+AM_COND_IF([FOUND_JQ],,[AC_MSG_ERROR([Required: jq to process json files])])
+
+AC_PROG_SED
+
+AC_ARG_ENABLE([debug], [ --enable-debug	Development level debug],
+[case "${enableval}" in
+	yes) debug=true ;;
+	no) debug=false ;;
+	*) AC_MSG_ERROR([bad value ${enableval} for --enable-debug]) ;;
+esac],[debug=false])
+
+AM_CONDITIONAL([DEBUG], [test x$debug = xtrue])
 
 AC_OUTPUT([Makefile])
 

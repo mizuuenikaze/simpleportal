@@ -148,8 +148,8 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(mukportaldir)"
-DATA = $(mukportal_DATA)
+am__installdirs = "$(DESTDIR)$(portaldir)"
+DATA = $(portal_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Makefile.in install-sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -191,7 +191,6 @@ LIBS = @LIBS@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MKDIR_P = @MKDIR_P@
-NODE_ENV = @NODE_ENV@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -200,6 +199,7 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
@@ -226,6 +226,7 @@ htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
+jq = @jq@
 libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
@@ -248,11 +249,13 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 uglifyjs = @uglifyjs@
-mukportaldir = $(prefix)/muk
-mukportal_DATA = artifacts/portal.js artifacts/theme.css
 
 # Make does not offer a recursive wildcard function, so here's one:
 rwildcard = $(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
+@DEBUG_FALSE@NODE_ENV = production
+@DEBUG_TRUE@NODE_ENV = development
+@DEBUG_FALSE@portaldir = $(prefix)/muk
+@DEBUG_FALSE@portal_DATA = artifacts/portal.js artifacts/theme.css
 all: all-am
 
 .SUFFIXES:
@@ -289,27 +292,27 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
-install-mukportalDATA: $(mukportal_DATA)
+install-portalDATA: $(portal_DATA)
 	@$(NORMAL_INSTALL)
-	@list='$(mukportal_DATA)'; test -n "$(mukportaldir)" || list=; \
+	@list='$(portal_DATA)'; test -n "$(portaldir)" || list=; \
 	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(mukportaldir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(mukportaldir)" || exit 1; \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(portaldir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(portaldir)" || exit 1; \
 	fi; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  echo "$$d$$p"; \
 	done | $(am__base_list) | \
 	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(mukportaldir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(mukportaldir)" || exit $$?; \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(portaldir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(portaldir)" || exit $$?; \
 	done
 
-uninstall-mukportalDATA:
+uninstall-portalDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(mukportal_DATA)'; test -n "$(mukportaldir)" || list=; \
+	@list='$(portal_DATA)'; test -n "$(portaldir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(mukportaldir)'; $(am__uninstall_files_from_dir)
+	dir='$(DESTDIR)$(portaldir)'; $(am__uninstall_files_from_dir)
 tags TAGS:
 
 ctags CTAGS:
@@ -484,7 +487,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(DATA) all-local
 installdirs:
-	for dir in "$(DESTDIR)$(mukportaldir)"; do \
+	for dir in "$(DESTDIR)$(portaldir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -538,7 +541,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-mukportalDATA
+install-data-am: install-portalDATA
 
 install-dvi: install-dvi-am
 
@@ -584,7 +587,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-mukportalDATA
+uninstall-am: uninstall-portalDATA
 
 .MAKE: install-am install-strip
 
@@ -596,11 +599,11 @@ uninstall-am: uninstall-mukportalDATA
 	install install-am install-data install-data-am install-dvi \
 	install-dvi-am install-exec install-exec-am install-html \
 	install-html-am install-info install-info-am install-man \
-	install-mukportalDATA install-pdf install-pdf-am install-ps \
+	install-pdf install-pdf-am install-portalDATA install-ps \
 	install-ps-am install-strip installcheck installcheck-am \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-generic pdf pdf-am ps ps-am tags-am \
-	uninstall uninstall-am uninstall-mukportalDATA
+	uninstall uninstall-am uninstall-portalDATA
 
 .PRECIOUS: Makefile
 
@@ -618,8 +621,12 @@ artifacts/portal.js: client/templates.js $(call rwildcard,client/,*.js)
 artifacts/theme.css: stylesheets/app.css stylesheets/cover.css
 	cleancss --output $@ $^
 
-@NODE_PROD_TRUE@all-local: artifacts/portal.js artifacts/theme.css
-@NODE_PROD_FALSE@all-local: client/templates.js
+pm2:
+	jq -r '.apps[0].env.NODE_ENV |= "$(NODE_ENV)"' process.json > p2.tmp && mv p2.tmp process.json
+@DEBUG_TRUE@all-local: client/templates.js pm2
+@DEBUG_FALSE@all-local: artifacts/portal.js artifacts/theme.css pm2
+
+.PHONY: pm2
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

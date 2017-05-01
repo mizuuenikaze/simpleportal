@@ -13,6 +13,7 @@ window.app = app;
 
 // Extends our main app singleton
 app.extend({
+	contextPath: window.location.pathname + '/',
     me: new Me(),
     featureCollection: new Features(),
     router: new Router(),
@@ -27,7 +28,7 @@ app.extend({
         // this kicks off our backbutton tracking (browser history)
         // and will cause the first matching handler in the router
         // to fire.
-        this.router.history.start({ pushState: true });
+        this.router.history.start([{ pushState: true},{root: this.contextPath}]);
     },
     // This is a helper for navigating around the app.
     // this gets called by a global click handler that handles

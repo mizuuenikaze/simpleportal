@@ -7,9 +7,9 @@ var ContactPage = require('./pages/contact');
 
 module.exports = Router.extend({
     routes: {
-        '': 'home',
-        'features': 'features',
-        'contact': 'contact',
+        'muk/': 'home',
+        'muk/features': 'features',
+        'muk/contact': 'contact',
         '(*path)': 'catchAll'
     },
 
@@ -34,6 +34,6 @@ module.exports = Router.extend({
     },
 
     catchAll: function () {
-        this.redirectTo('');
+        this.redirectTo(app.contextPath + '');
     }
 });
