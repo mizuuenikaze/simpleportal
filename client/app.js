@@ -13,7 +13,7 @@ window.app = app;
 
 // Extends our main app singleton
 app.extend({
-	contextPath: window.location.pathname.replace(/{2}.*$/, '') + '/',
+	contextPath: window.location.pathname.match(/(\/[^\/]+){1}/, '')[0] + '/',
     me: new Me(),
 	apiBaseUri: config.apiUrl,
     featureCollection: new Features({url: config.apiUrl + '/features'}),
