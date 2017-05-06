@@ -16,7 +16,7 @@ app.extend({
 	contextPath: window.location.pathname + '/',
     me: new Me(),
 	apiBaseUri: config.apiUrl,
-    featureCollection: new Features(),
+    featureCollection: new Features({url: config.apiUrl + '/features'}),
     router: new Router(),
     // This is where it all starts
     init: function() {
