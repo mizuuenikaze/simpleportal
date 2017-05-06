@@ -10,7 +10,7 @@ module.exports = Collection.extend({
 		console.log(browser.name);
 		var useXDR = /IE/.test(browser.name);
 		var headers = {};
-		var xhrFieds = {withCredentials: false};
+		var xhrFields = {withCredentials: false};
 
 		if (app.me.token !== '') {
 			headers.Authorization = 'Bearer ' + app.me.token;
