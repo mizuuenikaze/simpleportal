@@ -11,7 +11,7 @@ module.exports = PageView.extend({
     render: function () {
         this.renderWithTemplate();
         this.renderCollection(this.collection, FeatureView, this.queryByHook('feature-list'));
-        if (!this.collection.length) {
+        if (!this.collection.length || this.collection.length == 0) {
             this.fetchCollection();
         }
     },
