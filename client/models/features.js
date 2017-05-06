@@ -23,8 +23,9 @@ module.exports = Collection.extend({
 		console.log('Before send');
 		console.log(JSON.stringify(xhr));
 	},
-	initialize: function () {
+	initialize: function (models, options) {
+		this.url = options.url + this.url;
 		console.log('Feature collection init.');
-		console.log(url);
+		console.log(this.url);
 	}
 });
