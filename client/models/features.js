@@ -5,5 +5,5 @@ var Feature = require('./feature');
 
 module.exports = Collection.extend({
     model: Feature,
-    url: app.apiBaseUrl + '/features'
+    url: app.apiBaseUri + '/features'
 });

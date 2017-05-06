@@ -624,7 +624,7 @@ artifacts/theme.css: stylesheets/app.css stylesheets/cover.css
 pm2:
 	jq -r '.apps[0].env.NODE_ENV |= "$(NODE_ENV)"' process.json > p2.tmp && mv p2.tmp process.json
 @DEBUG_TRUE@all-local: client/templates.js pm2
-@DEBUG_FALSE@all-local: artifacts/portal.js artifacts/theme.css pm2
+@DEBUG_FALSE@all-local: artifacts/portal.js artifacts/theme.css
 
 .PHONY: pm2
 

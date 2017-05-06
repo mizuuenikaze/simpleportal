@@ -29,7 +29,7 @@ else
 NODE_ENV = production
 portaldir = $(prefix)/muk
 portal_DATA = artifacts/portal.js artifacts/theme.css
-all-local: artifacts/portal.js artifacts/theme.css pm2
+all-local: artifacts/portal.js artifacts/theme.css
 endif
 
 .PHONY: pm2
