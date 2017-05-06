@@ -9,6 +9,9 @@ module.exports = AmpersandModel.extend({
         lastName: ['string', true, ''],
         username: ['string']
     },
+	session: {
+		token: ['string', true, '']
+	},
     derived: {
         fullName: {
             deps: ['firstName', 'lastName'],
