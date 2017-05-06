@@ -15,6 +15,7 @@ window.app = app;
 app.extend({
 	contextPath: window.location.pathname + '/',
     me: new Me(),
+	apiBaseUri: config.apiUrl,
     featureCollection: new Features(),
     router: new Router(),
     // This is where it all starts
