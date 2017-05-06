@@ -17,11 +17,12 @@ module.exports = Collection.extend({
 			xhrFields.withCredentials = true;
 		}
 
-		return { useXDR: useXDR, headers: headers, xhrFields: xhrFields };
-	},
-	beforeSend: function (xhr) {
-		console.log('Before send');
-		console.log(JSON.stringify(xhr));
+		return { useXDR: useXDR, headers: headers, xhrFields: xhrFields,
+			beforeSend: function (xhr) {
+				console.log('Before send');
+				console.log(JSON.stringify(xhr));
+			}
+		};
 	},
 	initialize: function (models, options) {
 		this.url = options.url + this.url;
