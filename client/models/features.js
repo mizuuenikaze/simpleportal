@@ -1,7 +1,6 @@
 var Collection = require('ampersand-rest-collection');
 var Feature = require('./feature');
 var browser = require('detect-browser');
-var app = require('ampersand-app');
 
 
 module.exports = Collection.extend({
@@ -23,5 +22,9 @@ module.exports = Collection.extend({
 	beforeSend: function (xhr) {
 		console.log('Before send');
 		console.log(JSON.stringify(xhr));
+	},
+	initialize: function () {
+		console.log('Feature collection init.');
+		console.log(url);
 	}
 });
