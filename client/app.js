@@ -16,7 +16,7 @@ app.extend({
 	contextPath: window.location.pathname.match(/(\/[^\/]+){1}/, '')[0] + '/',
     me: new Me(),
 	apiBaseUri: config.apiUrl,
-    featureCollection: new Features({}, {url: config.apiUrl}),
+    featureCollection: new Features(undefined, {url: config.apiUrl}),
     router: new Router(),
     // This is where it all starts
     init: function() {
