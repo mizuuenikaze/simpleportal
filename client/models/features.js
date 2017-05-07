@@ -9,7 +9,7 @@ module.exports = Collection.extend({
 	ajaxConfig: function () {
 		console.log(browser.name);
 		var useXDR = /IE/.test(browser.name);
-		var headers = {};
+		var headers = {Accept: 'application/json'};
 		var xhrFields = {withCredentials: false};
 
 		if (app.me.token !== '') {

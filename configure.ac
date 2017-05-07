@@ -1,5 +1,5 @@
 dnl Process this file with autoconf
-AC_INIT([simpleportal], [1.3.1])
+AC_INIT([simpleportal], [1.3.2])
 AC_PREREQ(2.69)
 AM_INIT_AUTOMAKE([foreign nostdinc])
 dnl Program checks
