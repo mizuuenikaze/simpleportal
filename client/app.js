@@ -6,6 +6,7 @@ var MainView = require('./views/main');
 var Me = require('./models/me');
 var Features = require('./models/features');
 var domReady = require('domready');
+var browser = require('detect-browser');
 
 // attach our app to `window` so we can
 // easily access it from the console.
@@ -40,7 +41,20 @@ app.extend({
         this.router.history.navigate(url, {
             trigger: true
         });
-    }
+    },
+	configureAjax: function () {
+		console.log(browser.name);
+		var useXDR = /IE/.test(browser.name);
+		var headers = {Accept: 'application/json'};
+		var xhrFields = {withCredentials: false};
+
+		if (this.me.token !== '') {
+			headers.Authorization = 'Bearer ' + this.me.token;
+			xhrFields.withCredentials = true;
+		}
+
+		return { useXDR: useXDR, headers: headers, xhrFields: xhrFields };
+	}
 });
 
 // run it on domReady
