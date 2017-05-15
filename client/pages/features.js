@@ -4,7 +4,7 @@ var FeatureView = require('../views/feature');
 
 
 module.exports = PageView.extend({
-    pageTitle: 'Features',
+    pageTitle: 'muk Features',
     template: templates.pages.features,
     events: {
     },

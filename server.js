@@ -5,7 +5,6 @@ var helmet = require('helmet');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var Moonboots = require('moonboots-express');
-var compress = require('compression');
 var config = require('getconfig');
 var semiStatic = require('semi-static');
 var serveStatic = require('serve-static');
@@ -23,7 +22,6 @@ var fixPath = function (pathString) {
 // -----------------
 // Configure express
 // -----------------
-app.use(compress());
 app.use(serveStatic(fixPath('public')));
 
 // we only want to expose tests in dev

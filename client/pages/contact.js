@@ -3,6 +3,6 @@ var templates = require('../templates');
 
 
 module.exports = PageView.extend({
-    pageTitle: 'Contact',
+    pageTitle: 'muk Contact',
     template: templates.pages.contact
 });
