@@ -1,5 +1,6 @@
 node_modules/
 artifacts/
+public/
 client/templates.js
 stylesheets/app.css
 # autotools
