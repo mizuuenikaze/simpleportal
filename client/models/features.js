@@ -4,7 +4,7 @@ var app = require('ampersand-app');
 
 module.exports = Collection.extend({
     model: Feature,
-    url: '/features',
+    url: '/v1/features',
 	ajaxConfig: function () {
 		return app.configureAjax();
 	},
