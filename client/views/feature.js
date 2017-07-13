@@ -9,8 +9,8 @@ var templates = require('../templates');
 module.exports = View.extend({
     template: templates.includes.feature,
     bindings: {
-        'model.title': '[data-hook~=title]',
-        'model.content': '[data-hook~=content]'
+        'model.title': { type: 'text', hook:'title'},
+        'model.content': {type: 'text', hook:'content'}
     },
     subviews: {
         badges: {

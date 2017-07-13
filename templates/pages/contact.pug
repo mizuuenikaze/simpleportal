@@ -1,12 +1,24 @@
 section.page.pageTwo
+  div.container
+    div.alert.alert-danger.hidden(role="alert" data-hook="error-message")
+      span.glyphicon.glyphicon-exclamation-sign(aria-hidden="true")
+      span.sr-only Error:
+
   div.rule &nbsp;
-  h2 Contact
+  h2(data-hook="outl-a.a")
+  p.lead(data-hook="outl-a.b")
+  h3(data-hook="outl-b.a")
+  p.lead
+    a(data-hook="outl-b.b")
+  h3(data-hook="outl-c.a")
+  p.lead(data-hook="outl-c.b")
+  h3(data-hook="outl-d.a")
+  p.lead
+    a(data-hook="outl-d.b")
 
-  p.lead Happy to hear from you at 
-    a(href="mailto:mizuuenikaze@winduponthewater.com") mizuuenikaze@winduponthewater.com
-
+  div.rule &nbsp;
   div.attributions
-    h3 Attributions:
+    h4 Attributions:
     ul
       li
         a(href="http://glyphicons.com") glyphicons

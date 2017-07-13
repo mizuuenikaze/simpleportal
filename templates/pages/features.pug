@@ -1,5 +1,10 @@
 section.page.pageOne
-  h2 Features
+  div.container
+    div.alert.alert-danger.hidden(role="alert" data-hook="error-message")
+      span.glyphicon.glyphicon-exclamation-sign(aria-hidden="true")
+      span.sr-only Error:
+
+  h2(data-hook="outl-a")
 
   ul.list-group(data-hook="feature-list")
 

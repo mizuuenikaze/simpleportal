@@ -84,10 +84,6 @@ var allStylesheets = [
     fixPath('stylesheets/cover.css')
 ];
 
-if (config.isDev) {
-    allStylesheets.unshift(fixPath('stylesheets/bootstrap.css'));
-}
-
 new Moonboots({
     moonboots: {
         jsFileName: 'portal',
@@ -124,7 +120,6 @@ new Moonboots({
             }
         }
     },
-	appPath: contextPath,
     server: app
 });
 
