@@ -3,7 +3,6 @@ var PageView = require('./base');
 var templates = require('../templates');
 var FeatureView = require('../views/feature');
 var Feature = require('../models/feature');
-var _ = require('lodash');
 
 
 module.exports = PageView.extend({
@@ -12,14 +11,15 @@ module.exports = PageView.extend({
 	cmsId: 'e363fa5156a34be490f8be7c4507ad3f',
 	events: {
 	},
-	bindings: _.extend({}, PageView.prototype.bindings, {
+	bindings: {
 		'model.cms.page.a': {type: 'text', hook: 'outl-a'}
-	}),
+	},
 	render: function () {
+		PageView.prototype.render.apply(this, arguments);
+
 		if (!this.collection) {
 			this.fetchCollection();
 		}
-		this.renderWithTemplate();
 		this.renderCollection(this.collection, FeatureView, this.queryByHook('feature-list'));
 	},
 	fetchCollection: function () {

@@ -11,13 +11,13 @@ module.exports = View.extend({
     bindings: {
         'model.label': {
             type: function (el, value, previousValue) {
-                el.className = el.className + ' label-' + value;
+                el.className = el.className + ' badge-' + value;
             },
             hook: 'feature-label'
         },
-        'model.glyphicon': {
+        'model.icon': {
             type: function (el, value, previousValue) {
-                el.className = el.className + ' glyphicon-' + value;
+                el.className = el.className + ' fa-' + value;
             },
             hook: 'feature-label-icon'
         },
